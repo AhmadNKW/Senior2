@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Login/components/background.dart';
-import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
+import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
+import 'package:flutter_auth/Screens/02_2%20Login/components/login_background.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Body extends StatefulWidget {
-  const Body({
+class LoginBody extends StatefulWidget {
+  const LoginBody({
     Key key,
   }) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<LoginBody> createState() => _LoginBodyState();
 }
 
-class _BodyState extends State<Body> {
-  String _onCompleted = "";
-
+class _LoginBodyState extends State<LoginBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

@@ -2,10 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/components/text_field_container.dart';
 import 'package:flutter_auth/constants.dart';
 
-class VerificationCodeField extends StatelessWidget {
+class RoundedInputFieldBIO extends StatelessWidget {
+  final String hintText;
+  final IconData icon;
   final ValueChanged<String> onChanged;
-  const VerificationCodeField({
+  const RoundedInputFieldBIO({
     Key key,
+    this.hintText,
+    this.icon = Icons.person,
     this.onChanged,
   }) : super(key: key);
 
@@ -13,12 +17,15 @@ class VerificationCodeField extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextFieldContainer(
       child: TextField(
-        style: TextStyle(fontSize: 20.0, color: Colors.red[900]),
-        keyboardType: TextInputType.number,
-        maxLength: 4,
         onChanged: onChanged,
         cursorColor: kPrimaryColor,
+        maxLines: 5,
         decoration: InputDecoration(
+          icon: Icon(
+            icon,
+            color: kPrimaryColor,
+          ),
+          hintText: hintText,
           border: InputBorder.none,
         ),
       ),

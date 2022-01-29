@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Login/login_screen.dart';
-import 'package:flutter_auth/Screens/Signup/signup_screen.dart';
-import 'package:flutter_auth/Screens/Welcome/components/background.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/components/welcome_background.dart';
+import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
+import 'package:flutter_auth/Screens/02_2%20Login/login_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
-import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Body extends StatelessWidget {
+class WelcomeBody extends StatelessWidget {
+  get kPrimaryLightColor => null;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

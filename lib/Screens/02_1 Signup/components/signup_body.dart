@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/Login/login_screen.dart';
-import 'package:flutter_auth/Screens/Signup/components/background.dart';
+import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
+import 'package:flutter_auth/Screens/02_2%20Login/login_screen.dart';
+import 'package:flutter_auth/Screens/03%20Verification/verification_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -10,12 +11,12 @@ import 'package:flutter_svg/svg.dart';
 
 int v = -1;
 
-class Body extends StatefulWidget {
+class SignupBody extends StatefulWidget {
   @override
-  State<Body> createState() => _BodyState();
+  State<SignupBody> createState() => _SignupBodyState();
 }
 
-class _BodyState extends State<Body> {
+class _SignupBodyState extends State<SignupBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -88,7 +89,7 @@ class _BodyState extends State<Body> {
                             });
                           },
                           child: Text(
-                            "ولي أمر",
+                            "معلم",
                             style: TextStyle(
                               color: (v == 2) ? Colors.white : kPrimaryColor,
                             ),
@@ -120,13 +121,21 @@ class _BodyState extends State<Body> {
                 RoundedPasswordField(
                   onChanged: (value) {},
                 ),
-
                 SizedBox(height: size.height * 0.01),
 
-                //Signin
+                //Signup
                 RoundedButton(
                   text: "إنشاء حساب  ",
-                  press: () {},
+                  press: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return VerificationScreen();
+                        },
+                      ),
+                    );
+                  },
                 ),
 
                 SizedBox(height: size.height * 0.01),
