@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/02_2%20Login/components/login_background.dart';
+import 'package:flutter_auth/Screens/B_05%20Student_type/student_type_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -53,7 +54,7 @@ class _LoginBodyState extends State<LoginBody> {
                     SizedBox(height: size.height * 0.01),
 
                     RoundedInputField(
-                      hintText: "رقم هاتفك",
+                      hintText: "اسم المستخدم",
                       onChanged: (value) {},
                     ),
 
@@ -65,7 +66,13 @@ class _LoginBodyState extends State<LoginBody> {
                     //Signin
                     RoundedButton(
                       text: "تسجيل الدخول",
-                      press: () {},
+                      press: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return StudentTypeScreen();
+                          },
+                        ));
+                      },
                     ),
                     SizedBox(height: size.height * 0.01),
 

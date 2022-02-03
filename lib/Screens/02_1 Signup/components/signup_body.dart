@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
+import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/02_2%20Login/login_screen.dart';
-import 'package:flutter_auth/Screens/03%20Verification/verification_screen.dart';
+import 'package:flutter_auth/Screens/A_04%20Teacher_Signup/teacher_signup_screen.dart';
+import 'package:flutter_auth/Screens/B_04%20Student_Signup/student_signup_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -114,12 +116,18 @@ class _SignupBodyState extends State<SignupBody> {
                 SizedBox(height: size.height * 0.005),
 
                 RoundedInputField(
-                  hintText: "رقم هاتفك",
+                  hintText: "اسم المستخدم",
                   onChanged: (value) {},
                 ),
 
                 RoundedPasswordField(
                   onChanged: (value) {},
+                ),
+                SizedBox(height: size.height * 0.01),
+
+                RoundedPasswordField(
+                  onChanged: (value) {},
+                  text: "تأكيد كلمة المرور",
                 ),
                 SizedBox(height: size.height * 0.01),
 
@@ -131,7 +139,12 @@ class _SignupBodyState extends State<SignupBody> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return VerificationScreen();
+                          if (v == 1)
+                            return StudentSignupScreen();
+                          else if (v == 2)
+                            return TeacherSignupScreen();
+                          else
+                            return SignUpScreen();
                         },
                       ),
                     );

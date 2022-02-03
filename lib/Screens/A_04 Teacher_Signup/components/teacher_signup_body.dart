@@ -1,40 +1,57 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
 import 'package:flutter_auth/Screens/A_05%20Teacher_Busy_Days_And_Times/Teacher_Busy_Days_And_Times_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_input_field_BIO.dart';
+import 'package:flutter_auth/components/rounded_input_field_number.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
 
-int v = -1;
-bool v1 = false;
-bool v2 = false;
-bool v3 = false;
-int v4 = -1;
-int v5 = -1;
-bool v6 = false;
-bool v7 = false;
-bool v8 = false;
-bool v9 = false;
-bool v10 = false;
-bool v11 = false;
-int v12 = -1;
-List<dynamic> productTypesList = [
-  {"id": "الصف الأول", "name": "الصف الأول"},
-  {"id": "الصف الثاني", "name": "الصف الثاني"},
-  {"id": "الصف الثالث", "name": "الصف الثالث"},
-  {"id": "الصف الرابع", "name": "الصف الرابع"},
-  {"id": "الصف الخامس", "name": "الصف الخامس"},
-  {"id": "الصف السادس", "name": "الصف السادس"},
-  {"id": "الصف السابع", "name": "الصف السابع"},
-  {"id": "الصف الثامن", "name": "الصف الثامن"},
-  {"id": "الصف التاسع", "name": "الصف التاسع"},
-  {"id": "الصف العاشر", "name": "الصف العاشر"},
-  {"id": "الصف الحادي عشر", "name": "الصف الحادي عشر"},
-  {"id": "الصف الباكالوريا", "name": "الصف الباكالوريا"},
-];
+int gender = -1;
+bool place_to_teach_pp = false;
+bool place_to_teach_th = false;
+bool place_to_teach_sh = false;
+int gender_teach = -1;
+int edu_degree = -1;
+bool category_it = false;
+bool category_le = false;
+bool category_st = false;
+bool category_tr = false;
+bool category_re = false;
+bool birthdate = false;
+
+var class_to_teach = {
+  'first': 'false',
+  'second': 'false',
+  'third': 'false',
+  'fourth': 'false',
+  'fifth': 'false',
+  'sixth': 'false',
+  'seventh': 'false',
+  'eightth': 'false',
+  'ninth': 'false',
+  'tenth': 'false',
+  'eleventh': 'false',
+  'twelfth': 'false'
+};
+
+bool parseBool(String text) {
+  if (text == 'true') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+String parseString(bool bol) {
+  if (bol == true)
+    return "true";
+  else
+    return "false";
+}
 
 class TeacherSignupBody extends StatefulWidget {
   @override
@@ -55,413 +72,806 @@ class _TeacherSignupBodyState extends State<TeacherSignupBody> {
         children: <Widget>[
           SizedBox(height: size.height * 0.05),
           SvgPicture.asset("assets/icons/Drousi.svg"),
-          Column(children: [
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-              width: 350,
-              padding: EdgeInsetsDirectional.all(22),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(11),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 2,
-                      offset: Offset(0, 0),
-                      color: Colors.grey.withOpacity(0.8),
-                    )
-                  ]),
-              child: Column(children: [
-                //إنشاء حساب مدرس
-                Text(
-                  "إنشاء حساب مدرس  ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-                ),
-                SizedBox(height: size.height * 0.04),
+          Column(
+            children: [
+              Padding(padding: EdgeInsets.all(20)),
+              Container(
+                width: 350,
+                padding: EdgeInsetsDirectional.all(22),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(11),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 2,
+                        offset: Offset(0, 0),
+                        color: Colors.grey.withOpacity(0.8),
+                      )
+                    ]),
+                child: Column(children: [
+                  //إنشاء حساب مدرس
+                  Text(
+                    "إنشاء حساب مدرس  ",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                  ),
+                  SizedBox(height: size.height * 0.04),
 
-                //الإسم
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "الإسم",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                RoundedInputField(
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: size.height * 0.01),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "الإسم",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  RoundedInputField(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
 
-                //تاريخ الميلاد
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "تاريخ الميلاد",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                OutlinedButton(
-                  onPressed: () {
-                    showDatePicker(
-                            context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(1900),
-                            lastDate: DateTime(2023))
-                        .then((data) {
-                      setState(() {
-                        v11 = !v11;
+                  //رقم الهاتف
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "رقم الهاتف",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  RoundedInputFieldNumber(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
+
+                  //تاريخ الميلاد
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "تاريخ الميلاد",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  OutlinedButton(
+                    onPressed: () {
+                      showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime(1900),
+                              lastDate: DateTime(2023))
+                          .then((data) {
+                        setState(() {
+                          birthdate = !birthdate;
+                        });
                       });
-                    });
-                  },
-                  child: Text(
-                    ' تاريخ الميلاد',
-                    style: TextStyle(
-                      color: (v11 == true) ? Colors.white : kPrimaryColor,
+                    },
+                    child: Text(
+                      ' تاريخ الميلاد',
+                      style: TextStyle(
+                        color:
+                            (birthdate == true) ? Colors.white : kPrimaryColor,
+                      ),
+                    ),
+                    style: OutlinedButton.styleFrom(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10)),
+                        side: BorderSide(
+                          color: (birthdate == true)
+                              ? Color.fromRGBO(226, 247, 255, 0)
+                              : kPrimaryColor,
+                        ),
+                        backgroundColor: (birthdate == true)
+                            ? kColor5
+                            : Color.fromRGBO(226, 247, 255, 0),
+                        shadowColor: (birthdate == true)
+                            ? Colors.grey
+                            : Color.fromRGBO(226, 247, 255, 0),
+                        elevation: 3),
+                  ),
+                  SizedBox(height: size.height * 0.02),
+
+                  //الجنس
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "الجنس    ",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                gender = 1;
+                              });
+                            },
+                            child: Text(
+                              'أنثى',
+                              style: TextStyle(
+                                color: (gender == 1)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (gender == 1)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (gender == 1)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (gender == 1)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                          Padding(padding: EdgeInsets.all(20)),
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                gender = 2;
+                              });
+                            },
+                            child: Text(
+                              "ذكر",
+                              style: TextStyle(
+                                color: (gender == 2)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                    color: (gender == 2)
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor),
+                                backgroundColor: (gender == 2)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (gender == 2)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(height: size.height * 0.01),
+
+                  //عنوان السكن
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "عنوان السكن",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  RoundedInputField(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
+
+                  //رابط حساب الفيسبوك
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "رابط حساب الفيسبوك  ",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  RoundedInputField(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
+
+                  //مكان التدريس
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "مكان التدريس  ",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                place_to_teach_pp = !place_to_teach_pp;
+                              });
+                            },
+                            child: Text(
+                              'مكان عام',
+                              style: TextStyle(
+                                color: (place_to_teach_pp == true)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (place_to_teach_pp == true)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (place_to_teach_pp == true)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (place_to_teach_pp == true)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                          Padding(padding: EdgeInsets.all(4)),
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                place_to_teach_th = !place_to_teach_th;
+                              });
+                            },
+                            child: Text(
+                              'بيت المدرس',
+                              style: TextStyle(
+                                color: (place_to_teach_th == true)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (place_to_teach_th == true)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (place_to_teach_th == true)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (place_to_teach_th == true)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                          Padding(padding: EdgeInsets.all(4)),
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                place_to_teach_sh = !place_to_teach_sh;
+                              });
+                            },
+                            child: Text(
+                              'بيت الطالب',
+                              style: TextStyle(
+                                color: (place_to_teach_sh == true)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (place_to_teach_sh == true)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (place_to_teach_sh == true)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (place_to_teach_sh == true)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(height: size.height * 0.02),
+
+                  //الجنس المراد تدريسه
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "الجنس المراد تدريسه ",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  Container(
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                gender_teach = 1;
+                              });
+                            },
+                            child: Text(
+                              'أنثى',
+                              style: TextStyle(
+                                color: (gender_teach == 1)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (gender_teach == 1)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (gender_teach == 1)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (gender_teach == 1)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                          Padding(padding: EdgeInsets.all(20)),
+                          OutlinedButton(
+                            onPressed: () {
+                              setState(() {
+                                gender_teach = 2;
+                              });
+                            },
+                            child: Text(
+                              'ذكر',
+                              style: TextStyle(
+                                color: (gender_teach == 2)
+                                    ? Colors.white
+                                    : kPrimaryColor,
+                              ),
+                            ),
+                            style: OutlinedButton.styleFrom(
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10)),
+                                side: BorderSide(
+                                  color: (gender_teach == 2)
+                                      ? Color.fromRGBO(226, 247, 255, 0)
+                                      : kPrimaryColor,
+                                ),
+                                backgroundColor: (gender_teach == 2)
+                                    ? kColor5
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                shadowColor: (gender_teach == 2)
+                                    ? Colors.grey
+                                    : Color.fromRGBO(226, 247, 255, 0),
+                                elevation: 3),
+                          ),
+                        ]),
+                  ),
+                  SizedBox(height: size.height * 0.02),
+
+                  //تكلفة الساعة
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "تكلفة الساعة",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  RoundedInputField(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
+
+                  //الدرجة التعليمية للمدرس
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "الدرجة التعليمية للمدرس ",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    edu_degree = 1;
+                                  });
+                                },
+                                child: Text(
+                                  'جامعي',
+                                  style: TextStyle(
+                                    color: (edu_degree == 1)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (edu_degree == 1)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (edu_degree == 1)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (edu_degree == 1)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    edu_degree = 2;
+                                  });
+                                },
+                                child: Text(
+                                  "ثانوي",
+                                  style: TextStyle(
+                                    color: (edu_degree == 2)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                        color: (edu_degree == 2)
+                                            ? Color.fromRGBO(226, 247, 255, 0)
+                                            : kPrimaryColor),
+                                    backgroundColor: (edu_degree == 2)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (edu_degree == 2)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    edu_degree = 3;
+                                  });
+                                },
+                                child: Text(
+                                  'إعدادي',
+                                  style: TextStyle(
+                                    color: (edu_degree == 3)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (edu_degree == 3)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (edu_degree == 3)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (edu_degree == 3)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    edu_degree = 4;
+                                  });
+                                },
+                                child: Text(
+                                  'دكتورا',
+                                  style: TextStyle(
+                                    color: (edu_degree == 4)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (edu_degree == 4)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (edu_degree == 4)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (edu_degree == 4)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    edu_degree = 6;
+                                  });
+                                },
+                                child: Text(
+                                  "ماستر",
+                                  style: TextStyle(
+                                    color: (edu_degree == 6)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                        color: (edu_degree == 6)
+                                            ? Color.fromRGBO(226, 247, 255, 0)
+                                            : kPrimaryColor),
+                                    backgroundColor: (edu_degree == 6)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (edu_degree == 6)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                            ]),
+                      ],
                     ),
                   ),
-                  style: OutlinedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10)),
-                      side: BorderSide(
-                        color: (v11 == true)
-                            ? Color.fromRGBO(226, 247, 255, 0)
-                            : kPrimaryColor,
+                  SizedBox(height: size.height * 0.01),
+
+                  //نوع الفرع المراد تدريسه
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        "نوع فرع الطالب المراد تدريسه",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
+                    ],
+                  ),
+                  Container(
+                    child: Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    category_it = !category_it;
+                                  });
+                                },
+                                child: Text(
+                                  'معلوماتية',
+                                  style: TextStyle(
+                                    color: (category_it == true)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (category_it == true)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (category_it == true)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (category_it == true)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    category_le = !category_le;
+                                  });
+                                },
+                                child: Text(
+                                  "أدبي",
+                                  style: TextStyle(
+                                    color: (category_le == true)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                        color: (category_le == true)
+                                            ? Color.fromRGBO(226, 247, 255, 0)
+                                            : kPrimaryColor),
+                                    backgroundColor: (category_le == true)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (category_le == true)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    category_st = !category_st;
+                                  });
+                                },
+                                child: Text(
+                                  'علمي',
+                                  style: TextStyle(
+                                    color: (category_st == true)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (category_st == true)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (category_st == true)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (category_st == true)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                            ]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    category_tr = !category_tr;
+                                  });
+                                },
+                                child: Text(
+                                  'تجاري ',
+                                  style: TextStyle(
+                                    color: (category_tr == true)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                      color: (category_tr == true)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor,
+                                    ),
+                                    backgroundColor: (category_tr == true)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (category_tr == true)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                              Padding(padding: EdgeInsets.all(4)),
+                              OutlinedButton(
+                                onPressed: () {
+                                  setState(() {
+                                    category_re = !category_re;
+                                  });
+                                },
+                                child: Text(
+                                  "شريعة",
+                                  style: TextStyle(
+                                    color: (category_re == true)
+                                        ? Colors.white
+                                        : kPrimaryColor,
+                                  ),
+                                ),
+                                style: OutlinedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    side: BorderSide(
+                                        color: (category_re == true)
+                                            ? Color.fromRGBO(226, 247, 255, 0)
+                                            : kPrimaryColor),
+                                    backgroundColor: (category_re == true)
+                                        ? kColor5
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    shadowColor: (category_re == true)
+                                        ? Colors.grey
+                                        : Color.fromRGBO(226, 247, 255, 0),
+                                    elevation: 3),
+                              ),
+                            ]),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: size.height * 0.02),
+
+                  //الدرجة التعليمية للطالب المراد تدريسه
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Text(
+                      "الدرجة التعليمية للطالب المراد تدريسه ",
+                      style: TextStyle(
+                        color: kColor5,
+                        fontWeight: FontWeight.w900,
                       ),
-                      backgroundColor: (v11 == true)
-                          ? kColor5
-                          : Color.fromRGBO(226, 247, 255, 0),
-                      shadowColor: (v11 == true)
-                          ? Colors.grey
-                          : Color.fromRGBO(226, 247, 255, 0),
-                      elevation: 3),
-                ),
-                SizedBox(height: size.height * 0.02),
-
-                //الجنس
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "الجنس    ",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v = 1;
-                            });
-                          },
-                          child: Text(
-                            'أنثى',
-                            style: TextStyle(
-                              color: (v == 1) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v == 1)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v == 1)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v == 1)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                        Padding(padding: EdgeInsets.all(20)),
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v = 2;
-                            });
-                          },
-                          child: Text(
-                            "ذكر",
-                            style: TextStyle(
-                              color: (v == 2) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                  color: (v == 2)
-                                      ? Color.fromRGBO(226, 247, 255, 0)
-                                      : kPrimaryColor),
-                              backgroundColor: (v == 2)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v == 2)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                      ]),
-                ),
-                SizedBox(height: size.height * 0.01),
-
-                //عنوان السكن
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "عنوان السكن",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                RoundedInputField(
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: size.height * 0.01),
-
-                //رابط حساب الفيسبوك
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "رابط حساب الفيسبوك  ",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                RoundedInputField(
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: size.height * 0.01),
-
-                //مكان التدريس
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "مكان التدريس  ",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v1 = !v1;
-                            });
-                          },
-                          child: Text(
-                            'مكان عام',
-                            style: TextStyle(
-                              color:
-                                  (v1 == true) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v1 == true)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v1 == true)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v1 == true)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                        Padding(padding: EdgeInsets.all(4)),
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v2 = !v2;
-                            });
-                          },
-                          child: Text(
-                            'بيت المدرس',
-                            style: TextStyle(
-                              color:
-                                  (v2 == true) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v2 == true)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v2 == true)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v2 == true)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                        Padding(padding: EdgeInsets.all(4)),
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v3 = !v3;
-                            });
-                          },
-                          child: Text(
-                            'بيت الطالب',
-                            style: TextStyle(
-                              color:
-                                  (v3 == true) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v3 == true)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v3 == true)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v3 == true)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                      ]),
-                ),
-                SizedBox(height: size.height * 0.02),
-
-                //الجنس المراد تدريسه
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "الجنس المراد تدريسه ",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v4 = 1;
-                            });
-                          },
-                          child: Text(
-                            'أنثى',
-                            style: TextStyle(
-                              color: (v4 == 1) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v4 == 1)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v4 == 1)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v4 == 1)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                        Padding(padding: EdgeInsets.all(20)),
-                        OutlinedButton(
-                          onPressed: () {
-                            setState(() {
-                              v4 = 2;
-                            });
-                          },
-                          child: Text(
-                            'ذكر',
-                            style: TextStyle(
-                              color: (v4 == 2) ? Colors.white : kPrimaryColor,
-                            ),
-                          ),
-                          style: OutlinedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10)),
-                              side: BorderSide(
-                                color: (v4 == 2)
-                                    ? Color.fromRGBO(226, 247, 255, 0)
-                                    : kPrimaryColor,
-                              ),
-                              backgroundColor: (v4 == 2)
-                                  ? kColor5
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              shadowColor: (v4 == 2)
-                                  ? Colors.grey
-                                  : Color.fromRGBO(226, 247, 255, 0),
-                              elevation: 3),
-                        ),
-                      ]),
-                ),
-                SizedBox(height: size.height * 0.02),
-
-                //تكلفة الساعة
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "تكلفة الساعة",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                RoundedInputField(
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: size.height * 0.01),
-
-                //الدرجة التعليمية للمدرس
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "الدرجة التعليمية للمدرس ",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Column(
+                    ),
+                  ]),
+                  SizedBox(height: size.height * 0.005),
+                  Column(
                     children: [
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -469,89 +879,314 @@ class _TeacherSignupBodyState extends State<TeacherSignupBody> {
                             OutlinedButton(
                               onPressed: () {
                                 setState(() {
-                                  v5 = 1;
+                                  class_to_teach['third'] = parseString(
+                                      !parseBool(class_to_teach['third']));
                                 });
                               },
                               child: Text(
-                                'جامعي',
+                                'الثالث',
                                 style: TextStyle(
-                                  color:
-                                      (v5 == 1) ? Colors.white : kPrimaryColor,
+                                  color: (class_to_teach['third'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   side: BorderSide(
-                                    color: (v5 == 1)
+                                    color: (class_to_teach['third'] == "true")
                                         ? Color.fromRGBO(226, 247, 255, 0)
                                         : kPrimaryColor,
                                   ),
-                                  backgroundColor: (v5 == 1)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v5 == 1)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  backgroundColor:
+                                      (class_to_teach['third'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['third'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
                                   elevation: 3),
                             ),
                             Padding(padding: EdgeInsets.all(4)),
                             OutlinedButton(
                               onPressed: () {
                                 setState(() {
-                                  v5 = 2;
+                                  class_to_teach['second'] = parseString(
+                                      !parseBool(class_to_teach['second']));
                                 });
                               },
                               child: Text(
-                                "ثانوي",
+                                'الثاني',
                                 style: TextStyle(
-                                  color:
-                                      (v5 == 2) ? Colors.white : kPrimaryColor,
+                                  color: (class_to_teach['second'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   side: BorderSide(
-                                      color: (v5 == 2)
-                                          ? Color.fromRGBO(226, 247, 255, 0)
-                                          : kPrimaryColor),
-                                  backgroundColor: (v5 == 2)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v5 == 2)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
+                                    color: (class_to_teach['second'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['second'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['second'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
                                   elevation: 3),
                             ),
                             Padding(padding: EdgeInsets.all(4)),
                             OutlinedButton(
                               onPressed: () {
                                 setState(() {
-                                  v5 = 3;
+                                  class_to_teach['first'] = parseString(
+                                      !parseBool(class_to_teach['first']));
                                 });
                               },
                               child: Text(
-                                'إعدادي',
+                                'الأول',
                                 style: TextStyle(
-                                  color:
-                                      (v5 == 3) ? Colors.white : kPrimaryColor,
+                                  color: (class_to_teach['first'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   side: BorderSide(
-                                    color: (v5 == 3)
+                                    color: (class_to_teach['first'] == "true")
                                         ? Color.fromRGBO(226, 247, 255, 0)
                                         : kPrimaryColor,
                                   ),
-                                  backgroundColor: (v5 == 3)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v5 == 3)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  backgroundColor:
+                                      (class_to_teach['first'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['first'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                      SizedBox(height: size.height * 0.01),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['sixth'] = parseString(
+                                      !parseBool(class_to_teach['sixth']));
+                                });
+                              },
+                              child: Text(
+                                'السادس',
+                                style: TextStyle(
+                                  color: (class_to_teach['sixth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['sixth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['sixth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['sixth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['fifth'] = parseString(
+                                      !parseBool(class_to_teach['fifth']));
+                                });
+                              },
+                              child: Text(
+                                'الخامس',
+                                style: TextStyle(
+                                  color: (class_to_teach['fifth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['fifth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['fifth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['fifth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['fourth'] = parseString(
+                                      !parseBool(class_to_teach['fourth']));
+                                });
+                              },
+                              child: Text(
+                                'الرابع',
+                                style: TextStyle(
+                                  color: (class_to_teach['fourth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['fourth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['fourth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['fourth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                      SizedBox(height: size.height * 0.01),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['ninth'] = parseString(
+                                      !parseBool(class_to_teach['ninth']));
+                                });
+                              },
+                              child: Text(
+                                'التاسع',
+                                style: TextStyle(
+                                  color: (class_to_teach['ninth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['ninth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['ninth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['ninth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['eightth'] = parseString(
+                                      !parseBool(class_to_teach['eightth']));
+                                });
+                              },
+                              child: Text(
+                                'الثامن',
+                                style: TextStyle(
+                                  color: (class_to_teach['eightth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['eightth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['eightth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['eightth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['seventh'] = parseString(
+                                      !parseBool(class_to_teach['seventh']));
+                                });
+                              },
+                              child: Text(
+                                'السابع',
+                                style: TextStyle(
+                                  color: (class_to_teach['seventh'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['seventh'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['seventh'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['seventh'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
                                   elevation: 3),
                             ),
                           ]),
@@ -561,299 +1196,147 @@ class _TeacherSignupBodyState extends State<TeacherSignupBody> {
                             OutlinedButton(
                               onPressed: () {
                                 setState(() {
-                                  v5 = 4;
+                                  class_to_teach['twelfth'] = parseString(
+                                      !parseBool(class_to_teach['twelfth']));
                                 });
                               },
                               child: Text(
-                                'دكتورا',
+                                'البكالوريا',
                                 style: TextStyle(
-                                  color:
-                                      (v5 == 4) ? Colors.white : kPrimaryColor,
+                                  color: (class_to_teach['twelfth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   side: BorderSide(
-                                    color: (v5 == 4)
+                                    color: (class_to_teach['twelfth'] == "true")
                                         ? Color.fromRGBO(226, 247, 255, 0)
                                         : kPrimaryColor,
                                   ),
-                                  backgroundColor: (v5 == 4)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v5 == 4)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  backgroundColor:
+                                      (class_to_teach['twelfth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['twelfth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
                                   elevation: 3),
                             ),
                             Padding(padding: EdgeInsets.all(4)),
                             OutlinedButton(
                               onPressed: () {
                                 setState(() {
-                                  v5 = 6;
+                                  class_to_teach['eleventh'] = parseString(
+                                      !parseBool(class_to_teach['eleventh']));
                                 });
                               },
                               child: Text(
-                                "ماستر",
+                                'الحادي عشر',
                                 style: TextStyle(
-                                  color:
-                                      (v5 == 6) ? Colors.white : kPrimaryColor,
+                                  color: (class_to_teach['eleventh'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
                                 ),
                               ),
                               style: OutlinedButton.styleFrom(
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(10)),
                                   side: BorderSide(
-                                      color: (v5 == 6)
-                                          ? Color.fromRGBO(226, 247, 255, 0)
-                                          : kPrimaryColor),
-                                  backgroundColor: (v5 == 6)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v5 == 6)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
+                                    color:
+                                        (class_to_teach['eleventh'] == "true")
+                                            ? Color.fromRGBO(226, 247, 255, 0)
+                                            : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['eleventh'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['eleventh'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  class_to_teach['tenth'] = parseString(
+                                      !parseBool(class_to_teach['tenth']));
+                                });
+                              },
+                              child: Text(
+                                'العاشر',
+                                style: TextStyle(
+                                  color: (class_to_teach['tenth'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (class_to_teach['tenth'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (class_to_teach['tenth'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (class_to_teach['tenth'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
                                   elevation: 3),
                             ),
                           ]),
                     ],
                   ),
-                ),
-                SizedBox(height: size.height * 0.01),
 
-                //نوع الفرع المراد تدريسه
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "نوع فرع الطالب المراد تدريسه",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                Container(
-                  child: Column(
+                  SizedBox(height: size.height * 0.02),
+
+                  //BIO
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  v6 = !v6;
-                                });
-                              },
-                              child: Text(
-                                'معلوماتية',
-                                style: TextStyle(
-                                  color: (v6 == true)
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                ),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  side: BorderSide(
-                                    color: (v6 == true)
-                                        ? Color.fromRGBO(226, 247, 255, 0)
-                                        : kPrimaryColor,
-                                  ),
-                                  backgroundColor: (v6 == true)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v6 == true)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  elevation: 3),
-                            ),
-                            Padding(padding: EdgeInsets.all(4)),
-                            OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  v7 = !v7;
-                                });
-                              },
-                              child: Text(
-                                "أدبي",
-                                style: TextStyle(
-                                  color: (v7 == true)
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                ),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  side: BorderSide(
-                                      color: (v7 == true)
-                                          ? Color.fromRGBO(226, 247, 255, 0)
-                                          : kPrimaryColor),
-                                  backgroundColor: (v7 == true)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v7 == true)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  elevation: 3),
-                            ),
-                            Padding(padding: EdgeInsets.all(4)),
-                            OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  v8 = !v8;
-                                });
-                              },
-                              child: Text(
-                                'علمي',
-                                style: TextStyle(
-                                  color: (v8 == true)
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                ),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  side: BorderSide(
-                                    color: (v8 == true)
-                                        ? Color.fromRGBO(226, 247, 255, 0)
-                                        : kPrimaryColor,
-                                  ),
-                                  backgroundColor: (v8 == true)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v8 == true)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  elevation: 3),
-                            ),
-                          ]),
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  v9 = !v9;
-                                });
-                              },
-                              child: Text(
-                                'تجاري',
-                                style: TextStyle(
-                                  color: (v9 == true)
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                ),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  side: BorderSide(
-                                    color: (v9 == true)
-                                        ? Color.fromRGBO(226, 247, 255, 0)
-                                        : kPrimaryColor,
-                                  ),
-                                  backgroundColor: (v9 == true)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v9 == true)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  elevation: 3),
-                            ),
-                            Padding(padding: EdgeInsets.all(4)),
-                            OutlinedButton(
-                              onPressed: () {
-                                setState(() {
-                                  v10 = !v10;
-                                });
-                              },
-                              child: Text(
-                                "شريعة",
-                                style: TextStyle(
-                                  color: (v10 == true)
-                                      ? Colors.white
-                                      : kPrimaryColor,
-                                ),
-                              ),
-                              style: OutlinedButton.styleFrom(
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10)),
-                                  side: BorderSide(
-                                      color: (v10 == true)
-                                          ? Color.fromRGBO(226, 247, 255, 0)
-                                          : kPrimaryColor),
-                                  backgroundColor: (v10 == true)
-                                      ? kColor5
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  shadowColor: (v10 == true)
-                                      ? Colors.grey
-                                      : Color.fromRGBO(226, 247, 255, 0),
-                                  elevation: 3),
-                            ),
-                          ]),
+                      Text(
+                        "BIO",
+                        style: TextStyle(
+                            color: kColor5, fontWeight: FontWeight.w900),
+                      )
                     ],
                   ),
-                ),
-                SizedBox(height: size.height * 0.01),
+                  RoundedInputFieldBIO(
+                    onChanged: (value) {},
+                  ),
+                  SizedBox(height: size.height * 0.01),
 
-                //الدرجلة التعليمية للطالب المراد تدريسه
-                FormHelper.dropDownWidgetWithLabel(
-                  context,
-                  "الدرجلة التعليمية للطالب المراد تدريسه",
-                  "Select",
-                  "",
-                  productTypesList,
-                  (onChangedVal) {},
-                  (onValidateVal) {
-                    if (onValidateVal == null) {
-                      return 'الرجاء إختيار الخيار المناسب';
-                    }
-                    return null;
-                  },
-                  borderColor: kColor5,
-                  borderRadius: 12,
-                ),
-                SizedBox(height: size.height * 0.01),
+                  //التالي
+                  RoundedButton(
+                    text: "التالي  ",
+                    press: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return TeacherBusyDaysAndTimesScreen();
+                          },
+                        ),
+                      );
+                    },
+                  ),
 
-                //BIO
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Text(
-                      "BIO",
-                      style: TextStyle(
-                          color: kColor5, fontWeight: FontWeight.w900),
-                    )
-                  ],
-                ),
-                RoundedInputFieldBIO(
-                  onChanged: (value) {},
-                ),
-                SizedBox(height: size.height * 0.01),
-
-                //التالي
-                RoundedButton(
-                  text: "التالي  ",
-                  press: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) {
-                          return TeacherBusyDaysAndTimesScreen();
-                        },
-                      ),
-                    );
-                  },
-                ),
-
-                SizedBox(height: size.height * 0.01),
-              ]),
-            ),
-          ]),
+                  SizedBox(height: size.height * 0.01),
+                ]),
+              ),
+            ],
+          ),
         ],
       ),
     ));
