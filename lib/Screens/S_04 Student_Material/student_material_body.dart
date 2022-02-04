@@ -1,17 +1,10 @@
-// ignore_for_file: unused_import
+// ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
-import 'package:flutter_auth/Screens/A_05%20Teacher_Busy_Days_And_Times/Teacher_Busy_Days_And_Times_screen.dart';
-import 'package:flutter_auth/Screens/B_06%20Student_Edu/student_edu_screen.dart';
-import 'package:flutter_auth/Screens/B_07%20Student_Material/student_material_screen.dart';
-import 'package:flutter_auth/components/rounded_button.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
+import 'package:flutter_auth/Screens/S_05%20Teachers_List/a.dart';
 import 'package:flutter_auth/components/rounded_button2.dart';
-import 'package:flutter_auth/components/rounded_input_field.dart';
-import 'package:flutter_auth/components/rounded_input_field_BIO.dart';
-import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:snippet_coder_utils/FormHelper.dart';
 
 int v = -1;
 bool v1 = false;
@@ -26,6 +19,8 @@ bool v9 = false;
 bool v10 = false;
 bool v11 = false;
 int v12 = -1;
+int category = -1;
+
 List<dynamic> productTypesList = [
   {"id": "الصف الأول", "name": "الصف الأول"},
   {"id": "الصف الثاني", "name": "الصف الثاني"},
@@ -41,15 +36,15 @@ List<dynamic> productTypesList = [
   {"id": "الصف الباكالوريا", "name": "الصف الباكالوريا"},
 ];
 
-class StudentTypeBody extends StatefulWidget {
+class StudentMaterialBody extends StatefulWidget {
   @override
-  State<StudentTypeBody> createState() => _StudentTypeBodyState();
+  State<StudentMaterialBody> createState() => _StudentMaterialBodyState();
 }
 
 @override
 void initState() {}
 
-class _StudentTypeBodyState extends State<StudentTypeBody> {
+class _StudentMaterialBodyState extends State<StudentMaterialBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -78,28 +73,25 @@ class _StudentTypeBodyState extends State<StudentTypeBody> {
               child: Column(children: [
                 //إختر الدرجة التعليمية رجاءً
                 Text(
-                  "إختر نوع الدراسة رجاءً ",
+                  "إختر مادة رجاءً ",
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
                 ),
                 SizedBox(height: size.height * 0.04),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RoundedButton2(
-                      text: "معلوماتية", x: 50, y: 90, fz: 15, press: () {}),
+                  RoundedButton2(text: "الكيمياء", x: 45, y: 90, press: () {}),
+                  Padding(padding: EdgeInsets.all(4)),
+                  RoundedButton2(text: "الفيزياء", x: 45, y: 90, press: () {}),
                   Padding(padding: EdgeInsets.all(4)),
                   RoundedButton2(
-                      text: "أدبي", x: 50, y: 90, fz: 15, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(
-                      text: "علمي",
-                      fz: 15,
-                      x: 50,
+                      text: "الرياضيات  ",
+                      x: 45,
                       y: 90,
                       press: () {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
                             builder: (context) {
-                              return StudentEduScreen();
+                              return ListViewApp();
                             },
                           ),
                         );
@@ -108,13 +100,21 @@ class _StudentTypeBodyState extends State<StudentTypeBody> {
                 SizedBox(height: size.height * 0.01),
 
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RoundedButton2(
-                      text: "شريعة", x: 50, y: 100, fz: 15, press: () {}),
+                  RoundedButton2(text: "الفرنسي", x: 45, y: 90, press: () {}),
                   Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(
-                      text: "تجاري", x: 50, y: 100, fz: 15, press: () {}),
+                  RoundedButton2(text: "الإنكليزي", x: 45, y: 90, press: () {}),
+                  Padding(padding: EdgeInsets.all(4)),
+                  RoundedButton2(text: "العلوم", x: 45, y: 90, press: () {}),
                 ]),
                 SizedBox(height: size.height * 0.01),
+
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  RoundedButton2(text: "الديانة", x: 45, y: 90, press: () {}),
+                  Padding(padding: EdgeInsets.all(4)),
+                  RoundedButton2(text: "الوطنية", x: 45, y: 90, press: () {}),
+                  Padding(padding: EdgeInsets.all(4)),
+                  RoundedButton2(text: "العربية", x: 45, y: 90, press: () {}),
+                ]),
               ]),
             ),
           ]),

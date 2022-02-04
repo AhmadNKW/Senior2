@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
-import 'package:flutter_auth/Screens/A_05%20Teacher_Busy_Days_And_Times/Teacher_Busy_Days_And_Times_screen.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
+import 'package:flutter_auth/Screens/T_04%20Teacher_Busy_Days_And_Times/Teacher_Busy_Days_And_Times_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_input_field_BIO.dart';
@@ -36,6 +36,18 @@ var class_to_teach = {
   'tenth': 'false',
   'eleventh': 'false',
   'twelfth': 'false'
+};
+
+var materials = {
+  'math': 'false',
+  'physic': 'false',
+  'chemistry': 'false',
+  'science': 'false',
+  'english': 'false',
+  'france': 'false',
+  'religion': 'false',
+  'nationalism': 'false',
+  'arabic': 'false',
 };
 
 bool parseBool(String text) {
@@ -1298,7 +1310,332 @@ class _TeacherSignupBodyState extends State<TeacherSignupBody> {
                           ]),
                     ],
                   ),
+                  SizedBox(height: size.height * 0.02),
 
+                  //المواد التي تستطيع تدريسها
+                  Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                    Text(
+                      "المواد التي تستطيع تدريسها ",
+                      style: TextStyle(
+                        color: kColor5,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ]),
+                  SizedBox(height: size.height * 0.005),
+                  Column(
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['chemistry'] = parseString(
+                                      !parseBool(materials['chemistry']));
+                                });
+                              },
+                              child: Text(
+                                'الكيمياء',
+                                style: TextStyle(
+                                  color: (materials['chemistry'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['chemistry'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['chemistry'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (materials['chemistry'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['physic'] = parseString(
+                                      !parseBool(materials['physic']));
+                                });
+                              },
+                              child: Text(
+                                'الفيزياء',
+                                style: TextStyle(
+                                  color: (materials['physic'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['physic'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['physic'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['physic'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['math'] = parseString(
+                                      !parseBool(materials['math']));
+                                });
+                              },
+                              child: Text(
+                                'الرياضيات',
+                                style: TextStyle(
+                                  color: (materials['math'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['math'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor: (materials['math'] == "true")
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['math'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                      SizedBox(height: size.height * 0.01),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['nationalism'] = parseString(
+                                      !parseBool(materials['nationalism']));
+                                });
+                              },
+                              child: Text(
+                                'الوطني',
+                                style: TextStyle(
+                                  color: (materials['nationalism'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['nationalism'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['nationalism'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor:
+                                      (materials['nationalism'] == "true")
+                                          ? Colors.grey
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['arabic'] = parseString(
+                                      !parseBool(materials['arabic']));
+                                });
+                              },
+                              child: Text(
+                                'العربية',
+                                style: TextStyle(
+                                  color: (materials['arabic'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['arabic'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['arabic'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['arabic'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['science'] = parseString(
+                                      !parseBool(materials['science']));
+                                });
+                              },
+                              child: Text(
+                                'العلوم',
+                                style: TextStyle(
+                                  color: (materials['science'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['science'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['science'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['science'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                      SizedBox(height: size.height * 0.01),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['religion'] = parseString(
+                                      !parseBool(materials['religion']));
+                                });
+                              },
+                              child: Text(
+                                'الديانة',
+                                style: TextStyle(
+                                  color: (materials['religion'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['religion'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['religion'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['religion'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['france'] = parseString(
+                                      !parseBool(materials['france']));
+                                });
+                              },
+                              child: Text(
+                                'الفرنسية',
+                                style: TextStyle(
+                                  color: (materials['france'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['france'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['france'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['france'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  materials['english'] = parseString(
+                                      !parseBool(materials['english']));
+                                });
+                              },
+                              child: Text(
+                                'الإنكليزية',
+                                style: TextStyle(
+                                  color: (materials['english'] == "true")
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (materials['english'] == "true")
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor:
+                                      (materials['english'] == "true")
+                                          ? kColor5
+                                          : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (materials['english'] == "true")
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                    ],
+                  ),
                   SizedBox(height: size.height * 0.02),
 
                   //BIO

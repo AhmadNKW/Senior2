@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../Teacher_Busy_Days_And_Times_screen.dart';
+import 'Teacher_Busy_Days_And_Times_screen.dart';
 
 int v = -1;
 bool v1 = false;

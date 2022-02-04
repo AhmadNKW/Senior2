@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
-import 'package:flutter_auth/Screens/02_2%20Login/components/login_background.dart';
-import 'package:flutter_auth/Screens/B_05%20Student_type/student_type_screen.dart';
+import 'package:flutter_auth/Screens/S_04%20Student_Material/student_material_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
@@ -69,7 +69,7 @@ class _LoginBodyState extends State<LoginBody> {
                       press: () {
                         Navigator.push(context, MaterialPageRoute(
                           builder: (context) {
-                            return StudentTypeScreen();
+                            return StudentMaterialScreen();
                           },
                         ));
                       },

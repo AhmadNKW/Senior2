@@ -1,6 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
-import 'package:flutter_auth/Screens/B_06%20Student_Edu/student_edu_screen.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
+import 'package:flutter_auth/Screens/S_04%20Student_Material/student_material_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_input_field_BIO.dart';
@@ -22,6 +24,8 @@ bool v9 = false;
 bool v10 = false;
 bool v11 = false;
 int v12 = -1;
+int category = -1;
+
 List<dynamic> productTypesList = [
   {"id": "الصف الأول", "name": "الصف الأول"},
   {"id": "الصف الثاني", "name": "الصف الثاني"},
@@ -325,8 +329,185 @@ class _StudentSignupBodyState extends State<StudentSignupBody> {
                 ),
                 SizedBox(height: size.height * 0.01),
 
-                //الدرجلة التعليمية
+                //نوع الفرع الطالب
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      "نوع فرع الطالب",
+                      style: TextStyle(
+                          color: kColor5, fontWeight: FontWeight.w900),
+                    )
+                  ],
+                ),
+                Container(
+                  child: Column(
+                    children: [
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  category = 1;
+                                });
+                              },
+                              child: Text(
+                                'معلوماتية',
+                                style: TextStyle(
+                                  color: (category == 1)
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (category == 1)
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor: (category == 1)
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (category == 1)
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  category = 2;
+                                });
+                              },
+                              child: Text(
+                                "أدبي",
+                                style: TextStyle(
+                                  color: (category == 2)
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                      color: (category == 2)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor),
+                                  backgroundColor: (category == 2)
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (category == 2)
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  category = 3;
+                                });
+                              },
+                              child: Text(
+                                'علمي',
+                                style: TextStyle(
+                                  color: (category == 3)
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (category == 3)
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor: (category == 3)
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (category == 3)
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  category = 4;
+                                });
+                              },
+                              child: Text(
+                                'تجاري ',
+                                style: TextStyle(
+                                  color: (category == 4)
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                    color: (category == 4)
+                                        ? Color.fromRGBO(226, 247, 255, 0)
+                                        : kPrimaryColor,
+                                  ),
+                                  backgroundColor: (category == 4)
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (category == 4)
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                            Padding(padding: EdgeInsets.all(4)),
+                            OutlinedButton(
+                              onPressed: () {
+                                setState(() {
+                                  category = 5;
+                                });
+                              },
+                              child: Text(
+                                "شريعة",
+                                style: TextStyle(
+                                  color: (category == 5)
+                                      ? Colors.white
+                                      : kPrimaryColor,
+                                ),
+                              ),
+                              style: OutlinedButton.styleFrom(
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10)),
+                                  side: BorderSide(
+                                      color: (category == 5)
+                                          ? Color.fromRGBO(226, 247, 255, 0)
+                                          : kPrimaryColor),
+                                  backgroundColor: (category == 5)
+                                      ? kColor5
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  shadowColor: (category == 5)
+                                      ? Colors.grey
+                                      : Color.fromRGBO(226, 247, 255, 0),
+                                  elevation: 3),
+                            ),
+                          ]),
+                    ],
+                  ),
+                ),
+                SizedBox(height: size.height * 0.02),
 
+                //الدرجلة التعليمية
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
@@ -380,7 +561,7 @@ class _StudentSignupBodyState extends State<StudentSignupBody> {
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return StudentEduScreen();
+                          return StudentMaterialScreen();
                         },
                       ),
                     );

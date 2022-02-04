@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/02_1%20Signup/components/signup_background.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/02_2%20Login/login_screen.dart';
-import 'package:flutter_auth/Screens/A_04%20Teacher_Signup/teacher_signup_screen.dart';
-import 'package:flutter_auth/Screens/B_04%20Student_Signup/student_signup_screen.dart';
+import 'package:flutter_auth/Screens/S_03%20Student_Signup/student_signup_screen.dart';
+import 'package:flutter_auth/Screens/T_03%20Teacher_Signup/teacher_signup_screen.dart';
 import 'package:flutter_auth/components/already_have_an_account_acheck.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';

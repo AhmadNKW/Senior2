@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/01%20Welcome/components/welcome_background.dart';
+import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
 import 'package:flutter_auth/Screens/02_1%20Signup/signup_screen.dart';
 import 'package:flutter_auth/Screens/02_2%20Login/login_screen.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
