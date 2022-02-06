@@ -23,7 +23,15 @@ class _MyAppState extends State<MyApp> {
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: kColor3,
       ),
-      home: WelcomeScreen(),
+      supportedLocales: [
+        Locale("en", "US"),
+        Locale("ar", "AE"),
+      ],
+      home: Directionality(
+        // add this
+        textDirection: TextDirection.rtl, // set this property
+        child: WelcomeScreen(),
+      ),
     );
   }
 }

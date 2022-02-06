@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
-import 'package:flutter_auth/Screens/T_03%20Teacher_Signup/teacher_signup_body.dart';
 import 'package:flutter_auth/constants.dart';
 
 class Post {
