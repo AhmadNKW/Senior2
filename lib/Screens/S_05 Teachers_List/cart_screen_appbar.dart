@@ -1,8 +1,10 @@
 //AppBar
 
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/S_05%20Teachers_List/body.dart';
-import 'package:flutter_auth/Screens/S_05%20Teachers_List/cart.dart';
+import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher.dart';
+import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher_list_body.dart';
 import 'package:flutter_auth/constants.dart';
 
 class CartScreen extends StatelessWidget {
@@ -15,7 +17,7 @@ class CartScreen extends StatelessWidget {
         preferredSize: Size.fromHeight(50.0),
         child: BuildAppBar(context),
       ),
-      body: Body(),
+      body: TeacherListBody(),
     );
   }
 
@@ -28,14 +30,26 @@ class CartScreen extends StatelessWidget {
       centerTitle: true,
       title: Column(
         children: [
+          SizedBox(
+            height: 15,
+          ),
           Text(
             "نتائج البحث",
             style: TextStyle(color: kColor6),
           ),
-          Text("${teachersList.length} items",
-              style: Theme.of(context).textTheme.caption),
+          SizedBox(height: 2),
+          Text("${TeacherList.length} Teachers",
+              style: TextStyle(color: kColor5, fontSize: 11)),
         ],
       ),
     );
   }
 }
+                // child: ListTile(
+                //   onTap: () {
+                //     Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) {
+                //           return WelcomeScreen();
+                //         },
