@@ -3,20 +3,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/01%20Welcome/welcome_screen.dart';
 import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher.dart';
-import 'package:flutter_auth/Screens/S_06%20Teacher_Profile/t_card2.dart';
+import 'package:flutter_auth/Screens/S_06%20Searched_Teacher_Profile/rating_card.dart';
 import 'package:flutter_auth/constants.dart';
 
 int profileToggle = 2;
 
-class TeacherProfileScreen2 extends StatefulWidget {
-  const TeacherProfileScreen2({Key key, this.t1}) : super(key: key);
+class SearchedTeacherProfileScreen extends StatefulWidget {
+  const SearchedTeacherProfileScreen({Key key, this.t1}) : super(key: key);
   final Teacher t1;
 
   @override
-  State<TeacherProfileScreen2> createState() => _TeacherProfileScreen2State();
+  State<SearchedTeacherProfileScreen> createState() =>
+      _SearchedTeacherProfileScreenState();
 }
 
-class _TeacherProfileScreen2State extends State<TeacherProfileScreen2> {
+class _SearchedTeacherProfileScreenState
+    extends State<SearchedTeacherProfileScreen> {
   String doubleStar(double x) {
     if (x - x.toInt() >= 0.5)
       return "assets/images/half.png";
@@ -670,7 +672,7 @@ class _TeacherProfileScreen2State extends State<TeacherProfileScreen2> {
                             child: Column(
                               children: [
                                 ListTile(
-                                  title: TeacherItemCard2(
+                                  title: RatingItemCard(
                                       tCard2: TeacherList[index]),
                                 ),
                                 Divider(

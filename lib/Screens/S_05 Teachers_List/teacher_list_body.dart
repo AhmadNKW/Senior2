@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher.dart';
 import 'package:flutter_auth/Screens/S_05%20Teachers_List/t_card.dart';
-import 'package:flutter_auth/Screens/S_06%20Teacher_Profile/body%20copy.dart';
+import 'package:flutter_auth/Screens/S_06%20Searched_Teacher_Profile/searched_teacher_profile_screen.dart';
 import 'package:flutter_auth/constants.dart';
 
 class TeacherListBody extends StatefulWidget {
@@ -111,7 +111,7 @@ class _TeacherListBodyState extends State<TeacherListBody> {
                             context,
                             MaterialPageRoute(
                               builder: (context) {
-                                return TeacherProfileScreen2(
+                                return SearchedTeacherProfileScreen(
                                     t1: TeacherList[index]);
                               },
                             ),

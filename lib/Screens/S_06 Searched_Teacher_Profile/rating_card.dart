@@ -5,8 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher.dart';
 
-class TeacherItemCard2 extends StatefulWidget {
-  const TeacherItemCard2({
+class RatingItemCard extends StatefulWidget {
+  const RatingItemCard({
     Key key,
     this.tCard2,
   }) : super(key: key);
@@ -14,10 +14,10 @@ class TeacherItemCard2 extends StatefulWidget {
   final Teacher tCard2;
 
   @override
-  State<TeacherItemCard2> createState() => _TeacherItemCard2State();
+  State<RatingItemCard> createState() => _RatingItemCardState();
 }
 
-class _TeacherItemCard2State extends State<TeacherItemCard2> {
+class _RatingItemCardState extends State<RatingItemCard> {
   String doubleStar(double x) {
     if (x - x.toInt() >= 0.5)
       return "assets/images/half.png";
