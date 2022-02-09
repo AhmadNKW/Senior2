@@ -1,9 +1,9 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/01%20Welcome/welcome_screen.dart';
 import 'package:flutter_auth/Screens/S_05%20Teachers_List/teacher.dart';
 import 'package:flutter_auth/Screens/S_06%20Searched_Teacher_Profile/rating_card.dart';
+import 'package:flutter_auth/Screens/S_07%20Searched_Teacher_Calender/searched_teacher_calender_screen.dart';
 import 'package:flutter_auth/constants.dart';
 
 int profileToggle = 2;
@@ -410,32 +410,34 @@ class _SearchedTeacherProfileScreenState
                             ),
                       Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
                       profileToggle == 1
-                          ? Container(
-                              decoration: BoxDecoration(
-                                color: kColor6,
-                                borderRadius: BorderRadius.circular(20),
-                                border:
-                                    Border.all(color: Colors.white, width: 2),
-                                boxShadow: [
-                                  BoxShadow(
-                                    blurRadius: 5,
-                                    offset: Offset(0, 4),
-                                    color: kColor6.withOpacity(0.2),
+                          ? Center(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: kColor6,
+                                  borderRadius: BorderRadius.circular(20),
+                                  border:
+                                      Border.all(color: Colors.white, width: 2),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      blurRadius: 5,
+                                      offset: Offset(0, 4),
+                                      color: kColor6.withOpacity(0.2),
+                                    ),
+                                  ],
+                                ),
+                                width: 125,
+                                child: TextButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      profileToggle = 1;
+                                    });
+                                  },
+                                  child: Text(
+                                    "الملف الشخصي  ",
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold),
                                   ),
-                                ],
-                              ),
-                              width: 125,
-                              child: TextButton(
-                                onPressed: () {
-                                  setState(() {
-                                    profileToggle = 1;
-                                  });
-                                },
-                                child: Text(
-                                  "الملف الشخصي  ",
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold),
                                 ),
                               ),
                             )
@@ -461,201 +463,234 @@ class _SearchedTeacherProfileScreenState
                 ),
                 profileToggle == 1
                     ? Container(
-                        padding: EdgeInsets.only(top: 25, bottom: 60),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
+                        height: 355,
+                        padding: EdgeInsets.only(bottom: 70),
+                        child: ListView.builder(
+                          padding: EdgeInsets.symmetric(vertical: 0),
+                          itemCount: 1,
+                          itemBuilder: (context, index) => Card(
+                            shadowColor: Colors.transparent,
+                            borderOnForeground: false,
+                            semanticContainer: false,
+                            margin: EdgeInsets.all(0),
+                            child: Column(
                               children: [
-                                Text(
-                                  "سعر الساعة",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
+                                ListTile(
+                                  title: Container(
+                                    padding:
+                                        EdgeInsets.only(top: 25, bottom: 0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "سعر الساعة",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              widget.t1.cost.toString() +
+                                                  " S.P  ",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: 340,
+                                          color: kColor4,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "المواد التي يدرسها",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "الرياضيات - الفيزياء - الكيمياء   ",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: 340,
+                                          color: kColor4,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "الدرجة العلمية للطالب الذي يدرسه",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "العاشر - الحادي عشر - البكالوريا   ",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: 340,
+                                          color: kColor4,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "جنس الطالب الذي يدرسه   ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "ذكر - أنثى   ",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: 340,
+                                          color: kColor4,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "المكان الذي يدرس فيه  ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "بيت الطالب - بيت المدرس     ",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Container(
+                                          height: 2,
+                                          width: 340,
+                                          color: kColor4,
+                                        ),
+                                        SizedBox(
+                                          height: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              "معلومات عن المدرس       ",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w900,
+                                                  fontSize: 18,
+                                                  color: kColor6),
+                                            ),
+                                            SizedBox(
+                                              height: 10,
+                                            ),
+                                            Text(
+                                              "خبرة في التدريس 10 سنوات    \n مدرس في مدرسة السعادة \n حسن المعاملة مع الأطفال",
+                                              style: TextStyle(
+                                                  fontSize: 15,
+                                                  color: kColor5,
+                                                  fontWeight: FontWeight.w900),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  widget.t1.cost.toString() + " S.P  ",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
+                                Divider(
+                                  height: 20,
+                                  thickness: 2,
+                                  color: kColor4,
+                                  indent: 20,
+                                  endIndent: 20,
                                 ),
                               ],
                             ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              height: 2,
-                              width: 340,
-                              color: kColor4,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "المواد التي يدرسها",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "الرياضيات - الفيزياء - الكيمياء   ",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              height: 2,
-                              width: 340,
-                              color: kColor4,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "الدرجة العلمية للطالب الذي يدرسه",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "العاشر - الحادي عشر - البكالوريا   ",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              height: 2,
-                              width: 340,
-                              color: kColor4,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "جنس الطالب الذي يدرسه   ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "ذكر - أنثى   ",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              height: 2,
-                              width: 340,
-                              color: kColor4,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "المكان الذي يدرس فيه  ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "بيت الطالب - بيت المدرس     ",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Container(
-                              height: 2,
-                              width: 340,
-                              color: kColor4,
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  "معلومات عن المدرس       ",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w900,
-                                      fontSize: 18,
-                                      color: kColor6),
-                                ),
-                                SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  "خبرة في التدريس 10 سنوات    \n مدرس في مدرسة السعادة \n حسن المعاملة مع الأطفال",
-                                  style: TextStyle(
-                                      fontSize: 15,
-                                      color: kColor5,
-                                      fontWeight: FontWeight.w900),
-                                ),
-                              ],
-                            ),
-                            SizedBox(
-                              height: 20,
-                            ),
-                          ],
+                          ),
                         ),
                       )
                     : Container(
@@ -707,24 +742,24 @@ class _SearchedTeacherProfileScreenState
             stops: [0.0, 1.0],
           ),
         ),
-        width: 350,
-        height: 55,
+        width: 150,
+        height: 50,
         child: FloatingActionButton.extended(
           onPressed: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return WelcomeScreen();
+                  return SearchedTeacherCalender();
                 },
               ),
             );
           },
           label: const Text(
-            'إحجز المدرس',
-            style: TextStyle(fontSize: 17),
+            'إحجز المدرس  ',
+            style: TextStyle(fontSize: 14),
           ),
-          icon: const Icon(Icons.add_sharp),
+          icon: const Icon(Icons.add_circle_outline),
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),

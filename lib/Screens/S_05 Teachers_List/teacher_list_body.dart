@@ -20,9 +20,6 @@ class _TeacherListBodyState extends State<TeacherListBody> {
       padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          SizedBox(
-            height: 12,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -70,18 +67,14 @@ class _TeacherListBodyState extends State<TeacherListBody> {
                   }).toList(),
                 ),
               ),
-              SizedBox(
-                width: 15,
-              ),
             ],
           ),
           SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.all(7),
             decoration: BoxDecoration(
-              color: Color.fromARGB(255, 255, 255, 255),
+              color: Colors.white,
               borderRadius: BorderRadius.circular(12),
               boxShadow: [
                 BoxShadow(
@@ -91,7 +84,7 @@ class _TeacherListBodyState extends State<TeacherListBody> {
                 ),
               ],
             ),
-            height: 670,
+            height: 610,
             child: ListView.builder(
               itemCount: TeacherList.length,
               itemBuilder: (context, index) => Padding(

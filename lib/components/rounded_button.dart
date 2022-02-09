@@ -36,7 +36,10 @@ class RoundedButton extends StatelessWidget {
             onPressed: press,
             child: Text(
               text,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ),

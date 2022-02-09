@@ -14,7 +14,7 @@ class CartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(50.0),
+        preferredSize: Size.fromHeight(60.0),
         child: BuildAppBar(context),
       ),
       body: TeacherListBody(),
@@ -45,11 +45,3 @@ class CartScreen extends StatelessWidget {
     );
   }
 }
-                // child: ListTile(
-                //   onTap: () {
-                //     Navigator.push(
-                //       context,
-                //       MaterialPageRoute(
-                //         builder: (context) {
-                //           return WelcomeScreen();
-                //         },

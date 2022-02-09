@@ -1,9 +1,10 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_auth/Screens/01%20Welcome/welcome_background.dart';
-import 'package:flutter_auth/Screens/S_05%20Teachers_List/cart_screen_appbar.dart';
+import 'package:flutter_auth/Screens/S_05%20Teachers_List/cart_screen.dart';
 import 'package:flutter_auth/components/rounded_button2.dart';
+import 'package:flutter_auth/components/welcome_background.dart';
 import 'package:flutter_svg/svg.dart';
 
 int v = -1;
@@ -48,78 +49,83 @@ class _StudentMaterialBodyState extends State<StudentMaterialBody> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Background(
-        child: SingleChildScrollView(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(height: size.height * 0.05),
-          SvgPicture.asset("assets/icons/Drousi.svg"),
-          Column(children: [
-            Padding(padding: EdgeInsets.all(20)),
-            Container(
-              width: 350,
-              padding: EdgeInsetsDirectional.all(22),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(11),
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 2,
-                      offset: Offset(0, 0),
-                      color: Colors.grey.withOpacity(0.8),
-                    )
+    return Scaffold(
+      body: Background(
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(height: size.height * 0.05),
+            SvgPicture.asset("assets/icons/Drousi.svg"),
+            Column(children: [
+              Padding(padding: EdgeInsets.all(20)),
+              Container(
+                width: 350,
+                padding: EdgeInsetsDirectional.all(22),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(11),
+                    boxShadow: [
+                      BoxShadow(
+                        blurRadius: 2,
+                        offset: Offset(0, 0),
+                        color: Colors.grey.withOpacity(0.8),
+                      )
+                    ]),
+                child: Column(children: [
+                  //إختر الدرجة التعليمية رجاءً
+                  Text(
+                    "إختر مادة رجاءً ",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
+                  ),
+                  SizedBox(height: size.height * 0.04),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    RoundedButton2(
+                        text: "الكيمياء", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(
+                        text: "الفيزياء", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(
+                        text: "الرياضيات  ",
+                        x: 45,
+                        y: 90,
+                        press: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return CartScreen();
+                              },
+                            ),
+                          );
+                        }),
                   ]),
-              child: Column(children: [
-                //إختر الدرجة التعليمية رجاءً
-                Text(
-                  "إختر مادة رجاءً ",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900),
-                ),
-                SizedBox(height: size.height * 0.04),
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RoundedButton2(text: "الكيمياء", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(text: "الفيزياء", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(
-                      text: "الرياضيات  ",
-                      x: 45,
-                      y: 90,
-                      press: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) {
-                              return CartScreen();
-                            },
-                          ),
-                        );
-                      }),
-                ]),
-                SizedBox(height: size.height * 0.01),
+                  SizedBox(height: size.height * 0.01),
 
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RoundedButton2(text: "الفرنسي", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(text: "الإنكليزي", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(text: "العلوم", x: 45, y: 90, press: () {}),
-                ]),
-                SizedBox(height: size.height * 0.01),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    RoundedButton2(text: "الفرنسي", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(
+                        text: "الإنكليزي", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(text: "العلوم", x: 45, y: 90, press: () {}),
+                  ]),
+                  SizedBox(height: size.height * 0.01),
 
-                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  RoundedButton2(text: "الديانة", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(text: "الوطنية", x: 45, y: 90, press: () {}),
-                  Padding(padding: EdgeInsets.all(4)),
-                  RoundedButton2(text: "العربية", x: 45, y: 90, press: () {}),
+                  Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    RoundedButton2(text: "الديانة", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(text: "الوطنية", x: 45, y: 90, press: () {}),
+                    Padding(padding: EdgeInsets.all(4)),
+                    RoundedButton2(text: "العربية", x: 45, y: 90, press: () {}),
+                  ]),
                 ]),
-              ]),
-            ),
-          ]),
-        ],
-      ),
-    ));
+              ),
+            ]),
+          ],
+        ),
+      )),
+    );
   }
 }
